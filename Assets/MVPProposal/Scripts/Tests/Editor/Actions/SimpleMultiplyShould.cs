@@ -1,5 +1,4 @@
-﻿
-using MVPProposal.Scripts.Domain.Actions;
+﻿using MVPProposal.Scripts.Domain.Actions;
 using NUnit.Framework;
 
 namespace MVPProposal.Scripts.Tests.Editor.Actions
