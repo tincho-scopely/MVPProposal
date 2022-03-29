@@ -6,13 +6,13 @@ namespace MVPProposal.Scripts.Tests.Editor.Actions
     [TestFixture]
     public class SimpleMultiplyShould 
     {
-        private SimpleMultiply action;
+        private SimpleMultiply _action;
         private int _result;
 
         [SetUp]
         public void Setup()
         {
-            action = new SimpleMultiply();
+            _action = new SimpleMultiply();
         }
         
         [TestCase(2, 3, 6)]
@@ -24,7 +24,7 @@ namespace MVPProposal.Scripts.Tests.Editor.Actions
         }
 
         private void WhenExecuting(int firstNumber, int secondNumber) => 
-            _result = action.Execute(firstNumber, secondNumber);
+            _result = _action.Execute(firstNumber, secondNumber);
 
         private void ThenValueIs(int expected) => 
             Assert.AreEqual(expected, _result);

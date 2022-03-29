@@ -1,5 +1,7 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 using MVPProposal.Scripts.Domain.Actions;
+using MVPProposal.Scripts.Infrastructure.Repositories;
 using MVPProposal.Scripts.Presentation;
 using TMPro;
 using UnityEngine;
@@ -17,9 +19,13 @@ namespace MVPProposal.Scripts.UnityDelivery.Views
         void Start()
         {
             var simpleMultiply = new SimpleMultiply();
-            presenter = new MultiplyNumbersPresenter(this, simpleMultiply);
+            var multiplyRepository = new DefaultMultiplyRepository();
+            var complexMultiply = new ComplexMultiply(multiplyRepository);
+            presenter = new MultiplyNumbersPresenter(this, simpleMultiply, complexMultiply);
         }
 
+        private void OnDestroy() => presenter.Clear();
+        
         [UsedImplicitly]
         public void SimpleMultiplyClick()
         {
@@ -33,7 +39,12 @@ namespace MVPProposal.Scripts.UnityDelivery.Views
         {
             var firstNumber = int.Parse(firstInput.text);
             var secondNumber = int.Parse(secondInput.text);
-            presenter.SimpleMultiply(firstNumber, secondNumber);
+            presenter.ComplexMultiply(firstNumber, secondNumber);
+        }
+
+        public void ShowLoading()
+        {
+            resultText.text = "LOADING...";
         }
 
         public void ShowResult(int result) => 
