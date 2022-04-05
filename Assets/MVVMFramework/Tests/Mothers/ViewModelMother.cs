@@ -1,7 +1,7 @@
-using Playground.Framework.Repositories;
+using MVVMFramework.Repositories;
 using UniRx;
 
-namespace Playground.Framework.Tests.Mothers
+namespace MVVMFramework.Tests.Mothers
 {
     public static class ViewModelMother
     {

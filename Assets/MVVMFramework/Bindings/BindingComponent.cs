@@ -1,57 +1,41 @@
 using System.Linq;
 using System.Reflection;
-using Playground.Framework.Properties;
-using UniRx;
+using MVVMFramework.Properties;
 using UnityEngine;
 using static System.Convert;
 
-namespace Playground.Framework.Bindings
+namespace MVVMFramework.Bindings
 {
-    public class BindingComponent : MonoBehaviour
+    public class BindingComponent : BindingBase
     {
-        public ViewModel ViewModel;
-        public string ViewModelProperty;
-
-        public GameObject Target;
         public Component TargetComponent;
         public string TargetComponentProperty;
-        
-        CompositeDisposable disposables = new CompositeDisposable();
         PropertyInfo targetComponentPropertyInfo;
 
-        void OnDestroy() => disposables.Clear();
 
-        public void OnValidate() => Initialize();
-
-        void Initialize()
+        protected override void Initialize()
         {
             disposables.Clear();
             if (!IsValid()) return;
-
-            PropertyHelper.GetProperties(TargetComponent.GetType());
             
-            UpdateTargetComponent(new PropertyChanged(ViewModelProperty, ViewModel.GetValueOf(ViewModelProperty)));
+            PropertyHelper.GetProperties(TargetComponent.GetType());
+            UpdateComponentOnChange(new PropertyChanged(ViewModelProperty, ViewModel.GetValueOf(ViewModelProperty)));
             BindToViewModel();
         }
 
-        void BindToViewModel() =>
-            ViewModel.onPropertyChanged
-                .Where(propertyChanged => propertyChanged.Property.Equals(ViewModelProperty))
-                .Subscribe(UpdateTargetComponent)
-                .AddTo(disposables);
-
-        void UpdateTargetComponent(PropertyChanged changed)
+        protected override void UpdateComponentOnChange(PropertyChanged changed)
         {
             var updateProperty = PropertyHelper.GetProperties(TargetComponent.GetType())
                 .First(property => property.Name.Equals(TargetComponentProperty));
             updateProperty.Setter(TargetComponent, ChangeType(changed.Value, updateProperty.PropertyType));
         }
 
-        bool IsValid() => 
-            Target != null && 
-            TargetComponent != null && 
-            !string.IsNullOrEmpty(TargetComponentProperty) &&
-            ViewModel != null && 
-            !string.IsNullOrEmpty(ViewModelProperty);
+        protected override bool IsValid()
+        {
+            return base.IsValid() &&
+                   TargetComponent != null && 
+                   !string.IsNullOrEmpty(TargetComponentProperty);
+            
+        }
     }
 }

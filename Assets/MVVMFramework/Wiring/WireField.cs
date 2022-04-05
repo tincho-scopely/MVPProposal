@@ -1,6 +1,6 @@
 using System;
 
-namespace Playground.Framework.Wiring
+namespace MVVMFramework.Wiring
 {
     public struct WireField
     {

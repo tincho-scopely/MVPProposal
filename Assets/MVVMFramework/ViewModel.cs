@@ -1,9 +1,9 @@
-using Playground.Framework.Repositories;
-using Playground.Framework.Wiring;
+using MVVMFramework.Repositories;
+using MVVMFramework.Wiring;
 using UniRx;
 using UnityEngine;
 
-namespace Playground.Framework
+namespace MVVMFramework
 {
     public class ViewModel : ScriptableObject
     {

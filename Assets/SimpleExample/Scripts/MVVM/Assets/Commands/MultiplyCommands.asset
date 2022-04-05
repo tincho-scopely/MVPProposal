@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ec701b0616b4f4980d2ffcfd327c1d, type: 3}
+  m_Name: MultiplyCommands
+  m_EditorClassIdentifier: 
+  multiplyNumbersViewModel: {fileID: 11400000, guid: a221fcaae3d95411b83ecea098cfe0a8,
+    type: 2}
+  multiplyDatasource: {fileID: 11400000, guid: e7f73fee5d7744b498f79da7a077dc86, type: 2}

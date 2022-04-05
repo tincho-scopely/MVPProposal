@@ -1,4 +1,4 @@
-namespace Playground.Framework
+namespace MVVMFramework
 {
     public readonly struct PropertyChanged
     {

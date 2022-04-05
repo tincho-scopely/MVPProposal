@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace Playground.Framework.Properties
+namespace MVVMFramework.Properties
 {
     public interface PropertyResolver
     {

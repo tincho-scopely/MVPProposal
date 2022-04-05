@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using MVVMFramework.Properties;
+using MVVMFramework.Repositories;
+using MVVMFramework.Wiring;
 using NSubstitute;
 using NSubstitute.ReturnsExtensions;
 using NUnit.Framework;
-using Playground.Framework.Properties;
-using Playground.Framework.Repositories;
-using Playground.Framework.Wiring;
 using UniRx;
-using static Playground.Framework.Tests.Mothers.ViewModelMother;
+using static MVVMFramework.Tests.Mothers.ViewModelMother;
 
-namespace Playground.Framework.Tests
+namespace MVVMFramework.Tests
 {
     [TestFixture]
     public class ViewModelWiringShould

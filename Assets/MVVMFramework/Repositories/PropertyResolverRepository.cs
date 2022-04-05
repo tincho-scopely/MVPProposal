@@ -1,7 +1,7 @@
 using System;
-using Playground.Framework.Properties;
+using MVVMFramework.Properties;
 
-namespace Playground.Framework.Repositories
+namespace MVVMFramework.Repositories
 {
     public interface PropertyResolverRepository
     {

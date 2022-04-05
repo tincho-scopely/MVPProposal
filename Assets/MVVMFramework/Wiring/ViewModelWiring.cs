@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Playground.Framework.Properties;
-using Playground.Framework.Repositories;
+using MVVMFramework.Properties;
+using MVVMFramework.Repositories;
 
-namespace Playground.Framework.Wiring
+namespace MVVMFramework.Wiring
 {
     public class ViewModelWiring
     {

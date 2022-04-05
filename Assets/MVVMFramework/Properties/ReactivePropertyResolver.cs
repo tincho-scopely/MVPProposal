@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using UniRx;
 
-namespace Playground.Framework.Properties
+namespace MVVMFramework.Properties
 {
     public class ReactivePropertyResolver<T> : PropertyResolver
     {
