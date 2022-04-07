@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62ec701b0616b4f4980d2ffcfd327c1d, type: 3}
-  m_Name: MultiplyCommands
+  m_Script: {fileID: 11500000, guid: 00d82dcdc9074aac9c9e52219036b5a1, type: 3}
+  m_Name: InputsDatasource
   m_EditorClassIdentifier: 
-  inputsDatasource: {fileID: 11400000, guid: 979a6b67c896247f2b37eb03ddcc87af, type: 2}
-  multiplyDatasource: {fileID: 11400000, guid: e7f73fee5d7744b498f79da7a077dc86, type: 2}
