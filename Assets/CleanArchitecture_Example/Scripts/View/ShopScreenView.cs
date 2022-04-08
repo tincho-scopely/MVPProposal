@@ -13,13 +13,13 @@ namespace CleanArchitecture_Example.Scripts.View
 
         [SerializeField] private TextMeshProUGUI _playerBonusRolls;
         
-        private ShopScreenModel _model;
+        private ShopScreenViewData _viewData;
 
-        public void InjectDependencies(ShopScreenModel model)
+        public void InjectDependencies(ShopScreenViewData viewData)
         {
-            _model = model;
-            _model.Show.Subscribe(ShowScreen);
-            _model.PlayerBonusRolls.Subscribe(UpdatePlayerInventory);
+            _viewData = viewData;
+            _viewData.Show.Subscribe(ShowScreen);
+            _viewData.PlayerBonusRolls.Subscribe(UpdatePlayerInventory);
             
             // TODO: set initial Player bonus rolls from inventory
         }
@@ -29,13 +29,13 @@ namespace CleanArchitecture_Example.Scripts.View
             _playerBonusRolls.SetText(quantity);
         }
 
-        private void ShowScreen(List<BundleModel> bundleModels)
+        private void ShowScreen(List<BundleViewData> bundleModels)
         {
             FillBundles(bundleModels);
             _canvas.enabled = true;
         }
 
-        private void FillBundles(IReadOnlyList<BundleModel> bundleModels)
+        private void FillBundles(IReadOnlyList<BundleViewData> bundleModels)
         {
             for (var i = 0; i < _bundleViews.Length; i++)
             {

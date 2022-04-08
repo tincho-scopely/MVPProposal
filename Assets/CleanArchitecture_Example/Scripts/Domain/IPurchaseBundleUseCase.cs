@@ -40,10 +40,10 @@ namespace CleanArchitecture_Example.Scripts.Domain
 
         private void HandlePurchaseSucceed(ShopBundleDto shopBundleDto, Action<int> onSucceed)
         {
-            var commodityKey = shopBundleDto.Cost.Key;
-            _playerInventory.AddCommodity(shopBundleDto.Cost.Key, -shopBundleDto.Cost.Quantity);
+            var currencyKey = shopBundleDto.Cost.Key;
+            _playerInventory.AddCurrency(shopBundleDto.Cost.Key, -shopBundleDto.Cost.Quantity);
             
-            onSucceed?.Invoke(_playerInventory.GetCommodityQuantity(commodityKey));
+            onSucceed?.Invoke(_playerInventory.GetCurrencyQuantity(currencyKey));
         }
     }
 }

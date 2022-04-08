@@ -5,30 +5,30 @@ namespace CleanArchitecture_Example.Scripts.InterfaceAdapters
 {
     public class PlayerInventory : IPlayerInventory
     {
-        private List<ICommodity> _commodities;
+        private List<ICurrency> _currencies;
 
         public PlayerInventory()
         {
-            _commodities = new List<ICommodity>
+            _currencies = new List<ICurrency>
             {
-                new Commodity(CommodityDefinitions.BonusRolls,100)
+                new Currency(CurrencyTypes.BonusRolls,100)
             };
         }
 
-        public int GetCommodityQuantity(string commodityKey)
+        public int GetCurrencyQuantity(string currencyKey)
         {
-            return GetCommodity(commodityKey).Quantity;
+            return GetCurrency(currencyKey).Quantity;
         }
 
-        public ICommodity GetCommodity(string commodityKey)
+        public ICurrency GetCurrency(string currencyKey)
         {
-            return _commodities.Find(commodity => commodity.Key == commodityKey);
+            return _currencies.Find(currency => currency.Key == currencyKey);
         }
 
-        public void AddCommodity(string commodityKey, int quantity)
+        public void AddCurrency(string currencyKey, int quantity)
         {
-            var commodity = GetCommodity(commodityKey);
-            commodity.Quantity += quantity;
+            var currency = GetCurrency(currencyKey);
+            currency.Quantity += quantity;
         }
     }
 }

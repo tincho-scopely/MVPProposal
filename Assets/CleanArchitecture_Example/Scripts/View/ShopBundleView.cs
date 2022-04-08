@@ -15,17 +15,17 @@ namespace CleanArchitecture_Example.Scripts.View
         [SerializeField] private Image _costCommodityImage;
         [SerializeField] private Button _purchaseButton;
         
-        private BundleModel _model;
+        private BundleViewData _viewData;
 
         private void Awake()
         {
             _purchaseButton.onClick.AddListener(TryPurchaseItem);
         }
 
-        public void SetData(BundleModel model)
+        public void SetData(BundleViewData viewData)
         {
-            _model = model;
-            _model.ViewData.Subscribe(UpdateView);
+            _viewData = viewData;
+            _viewData.ViewData.Subscribe(UpdateView);
         }
 
         private void UpdateView(ShopBundleViewData viewData)
@@ -41,7 +41,7 @@ namespace CleanArchitecture_Example.Scripts.View
 
         private void TryPurchaseItem()
         {
-            _model.OnClick.Execute(_model.ViewData.Value.BundleId);
+            _viewData.OnClick.Execute(_viewData.ViewData.Value.BundleId);
         }
     }
 }

@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace CleanArchitecture_Example.Scripts.InterfaceAdapters
+namespace CleanArchitecture_Example.Scripts.View
 {
     [CreateAssetMenu(fileName = "ImagesRepository", menuName = "ScriptableObjects/Images Repository", order = 0)]
     public class ImagesRepositoryScriptableObject : ScriptableObject
@@ -11,15 +10,15 @@ namespace CleanArchitecture_Example.Scripts.InterfaceAdapters
         [Serializable]
         private class ImageDictionary
         {
-            public Image Image;
+            public Sprite Sprite;
             public string Key;
         }
 
         [SerializeField] private List<ImageDictionary> _images;
 
-        public Image GetImage(string key)
+        public Sprite GetSprite(string key)
         {
-            return _images.Find(image => image.Key == key)?.Image;
+            return _images.Find(image => image.Key == key)?.Sprite;
         }
     }
 }

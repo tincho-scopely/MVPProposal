@@ -16,7 +16,7 @@ namespace CleanArchitecture_Example.Scripts.Domain
         public void Show()
         {
             var items = _shopBundlesRepository.GetBundles();
-            _output.Show(items);
+            _output.SetOutput(items);
         }
     }
 }

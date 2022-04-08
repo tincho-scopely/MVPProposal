@@ -7,48 +7,49 @@ namespace CleanArchitecture_Example.Scripts.InterfaceAdapters
 {
     public class ShopScreenPresenter : IShowShopUseCaseOutput
     {
-        private readonly ShopScreenModel _model;
+        private readonly ShopScreenViewData _viewData;
         private readonly IPurchaseBundleUseCase _purchaseBundleUseCase;
+        private readonly IImageRepository _commoditiesImagesRepository;
+        private readonly IImageRepository _currenciesImagesRepository;
 
         public ShopScreenPresenter(
-            ShopScreenModel model,
-            IPurchaseBundleUseCase purchaseBundleUseCase)
+            ShopScreenViewData viewData,
+            IPurchaseBundleUseCase purchaseBundleUseCase,
+            IImageRepository commoditiesImagesRepository,
+            IImageRepository currenciesImagesRepository)
         {
-            _model = model;
+            _viewData = viewData;
             _purchaseBundleUseCase = purchaseBundleUseCase;
+            _commoditiesImagesRepository = commoditiesImagesRepository;
+            _currenciesImagesRepository = currenciesImagesRepository;
         }
         
-        public void Show(List<ShopBundleDto> bundleDtos)
+        public void SetOutput(List<ShopBundleDto> bundleDtos)
         {
-            var bundleModels = new List<BundleModel>(bundleDtos.Count);
+            var bundleModels = new List<BundleViewData>(bundleDtos.Count);
             foreach (var bundleDto in bundleDtos)
             {
                 bundleModels.Add(ParseBundle(bundleDto));
             }
 
-            _model.Show.Execute(bundleModels);
+            _viewData.Show.Execute(bundleModels);
         }
 
-        private BundleModel ParseBundle(ShopBundleDto dto)
+        private BundleViewData ParseBundle(ShopBundleDto dto)
         {
             var viewData = new ShopBundleViewData
             {
                 BundleId = dto.Id,
                 Name = dto.Name,
-                ItemImage = GetCommodityImage(dto.Item.Key),
+                ItemImage = _commoditiesImagesRepository.GetSprite(dto.Item.Key),
                 ItemAmount = dto.Item.Quantity.ToString(),
                 CostAmount = dto.Cost.Quantity.ToString(),
-                CostCommodityImage = GetCommodityImage(dto.Cost.Key)
+                CostCommodityImage = _currenciesImagesRepository.GetSprite(dto.Cost.Key)
             };
-            var bundleModel = new BundleModel(viewData);
-            bundleModel.OnClick.Subscribe(TryPurchaseBundle);
+            var bundleViewData = new BundleViewData(viewData);
+            bundleViewData.OnClick.Subscribe(TryPurchaseBundle);
             
-            return bundleModel;
-        }
-
-        private Sprite GetCommodityImage(string key)
-        {
-            return null;
+            return bundleViewData;
         }
 
         private void TryPurchaseBundle(int bundleId)
@@ -58,7 +59,7 @@ namespace CleanArchitecture_Example.Scripts.InterfaceAdapters
 
         private void HandlePurchaseSucceed(int playerBonusRolls)
         {
-            _model.PlayerBonusRolls.Value = playerBonusRolls.ToString();
+            _viewData.PlayerBonusRolls.Value = playerBonusRolls.ToString();
             Debug.Log("<color=green>Yeah - Bundle purchased!</color>");
         }
         

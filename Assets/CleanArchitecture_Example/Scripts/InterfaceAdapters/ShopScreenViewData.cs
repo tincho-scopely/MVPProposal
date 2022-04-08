@@ -3,32 +3,32 @@ using UniRx;
 
 namespace CleanArchitecture_Example.Scripts.InterfaceAdapters
 {
-    public class ShopScreenModel
+    public class ShopScreenViewData
     {
-        public ReactiveCommand<List<BundleModel>> Show;
+        public ReactiveCommand<List<BundleViewData>> Show;
         public ReactiveProperty<string> PlayerBonusRolls;
 
-        public ShopScreenModel()
+        public ShopScreenViewData()
         {
-            Show = new ReactiveCommand<List<BundleModel>>();
+            Show = new ReactiveCommand<List<BundleViewData>>();
             // TODO: load properly the initial amount of the user
             PlayerBonusRolls = new ReactiveProperty<string>("100");
         }
         
     }
 
-    public class BundleModel
+    public class BundleViewData
     {
         public ReactiveCommand<int> OnClick;
         public ReactiveProperty<ShopBundleViewData> ViewData;
 
-        private BundleModel()
+        private BundleViewData()
         {
             OnClick = new ReactiveCommand<int>();
             ViewData = new ReactiveProperty<ShopBundleViewData>();
         }
 
-        public BundleModel(ShopBundleViewData viewData) : this()
+        public BundleViewData(ShopBundleViewData viewData) : this()
         {
             ViewData.Value = viewData;
         }

@@ -4,7 +4,7 @@ namespace CleanArchitecture_Example.Scripts.Domain
     {
         public readonly int Id;
         public readonly string Name;
-        public readonly ICommodity Cost;
+        public readonly ICurrency Cost;
         public readonly ICommodity Item;
         
         // Example of a field that the View won't print
@@ -13,7 +13,7 @@ namespace CleanArchitecture_Example.Scripts.Domain
         public ShopBundleDto(
             int id,
             string name,
-            ICommodity cost, 
+            ICurrency cost, 
             ICommodity item, 
             string segment)
         {

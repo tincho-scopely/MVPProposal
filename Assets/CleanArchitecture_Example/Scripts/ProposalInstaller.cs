@@ -1,13 +1,17 @@
 using CleanArchitecture_Example.Scripts.Domain;
 using CleanArchitecture_Example.Scripts.InterfaceAdapters;
 using CleanArchitecture_Example.Scripts.View;
+using CleanArchitecture_Example.Scripts.View.ImagesRepositories;
 using UnityEngine;
 
 namespace CleanArchitecture_Example.Scripts
 {
     public class ProposalInstaller : MonoBehaviour
     {
+        [Header("Dependencies")]
         [SerializeField] private ShopScreenView _shopScreenView;
+        [SerializeField] private CommoditiesImagesRepository _commoditiesImagesRepository;
+        [SerializeField] private CurrenciesImagesRepository _currenciesImagesRepository;
         
         private ShopBundlesRepository _bundlesRepository;
         private IShowShopUseCaseOutput _shopScreenPresenter;
@@ -35,8 +39,8 @@ namespace CleanArchitecture_Example.Scripts
                 var bundle = new ShopBundleDto(
                     i,
                     $"Bundle {i}",
-                    new Commodity(CommodityDefinitions.BonusRolls, GetRandomQuantity(5, 21)),
-                    new Commodity(string.Empty, GetRandomQuantity(1, 3)),
+                    new Currency(CurrencyTypes.BonusRolls, GetRandomQuantity(5, 21)),
+                    new Commodity(CommodityTypes.Gift, GetRandomQuantity(1, 3)),
                     "shop"
                 );
                 
@@ -56,10 +60,15 @@ namespace CleanArchitecture_Example.Scripts
 
         private void InstallScreen()
         {
-            var model = new ShopScreenModel();
+            var model = new ShopScreenViewData();
 
             var purchaseBundleUseCase = new PurchaseBundleUseCase(_bundlesRepository, new EndpointHelper(), _playerInventory);
-            _shopScreenPresenter = new ShopScreenPresenter(model, purchaseBundleUseCase);
+            _shopScreenPresenter = new ShopScreenPresenter(
+                model, 
+                purchaseBundleUseCase,
+                _commoditiesImagesRepository,
+                _currenciesImagesRepository
+            );
 
             _shopScreenView.InjectDependencies(model);
         }
