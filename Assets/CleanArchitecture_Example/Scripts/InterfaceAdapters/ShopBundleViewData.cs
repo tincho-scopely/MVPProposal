@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MVP_CleanArchitecture_Example.Scripts.InterfaceAdapters
+namespace CleanArchitecture_Example.Scripts.InterfaceAdapters
 {
     public class ShopBundleViewData
     {

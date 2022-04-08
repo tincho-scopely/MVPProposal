@@ -1,10 +1,10 @@
-using MVP_CleanArchitecture_Example.Scripts.InterfaceAdapters;
+using CleanArchitecture_Example.Scripts.InterfaceAdapters;
 using TMPro;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
-using UniRx;
 
-namespace MVP_CleanArchitecture_Example.Scripts.View
+namespace CleanArchitecture_Example.Scripts.View
 {
     public class ShopBundleView : MonoBehaviour
     {

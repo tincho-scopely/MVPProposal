@@ -1,9 +1,9 @@
-using MVP_CleanArchitecture_Example.Scripts.Domain;
-using MVP_CleanArchitecture_Example.Scripts.InterfaceAdapters;
-using MVP_CleanArchitecture_Example.Scripts.View;
+using CleanArchitecture_Example.Scripts.Domain;
+using CleanArchitecture_Example.Scripts.InterfaceAdapters;
+using CleanArchitecture_Example.Scripts.View;
 using UnityEngine;
 
-namespace MVP_CleanArchitecture_Example.Scripts
+namespace CleanArchitecture_Example.Scripts
 {
     public class ProposalInstaller : MonoBehaviour
     {

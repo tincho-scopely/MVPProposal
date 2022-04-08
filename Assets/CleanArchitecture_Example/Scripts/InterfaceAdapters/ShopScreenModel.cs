@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UniRx;
 
-namespace MVP_CleanArchitecture_Example.Scripts.InterfaceAdapters
+namespace CleanArchitecture_Example.Scripts.InterfaceAdapters
 {
     public class ShopScreenModel
     {

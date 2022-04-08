@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using MVP_CleanArchitecture_Example.Scripts.InterfaceAdapters;
+using CleanArchitecture_Example.Scripts.InterfaceAdapters;
 using TMPro;
-using UnityEngine;
 using UniRx;
+using UnityEngine;
 
-namespace MVP_CleanArchitecture_Example.Scripts.View
+namespace CleanArchitecture_Example.Scripts.View
 {
     public class ShopScreenView : MonoBehaviour
     {

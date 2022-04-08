@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace MVP_CleanArchitecture_Example.Scripts.Domain
+namespace CleanArchitecture_Example.Scripts.Domain
 {
     public class ShopBundlesRepository : IShopBundlesRepository
     {

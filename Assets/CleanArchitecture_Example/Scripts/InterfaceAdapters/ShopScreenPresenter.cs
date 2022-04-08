@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using MVP_CleanArchitecture_Example.Scripts.Domain;
-using UnityEngine;
+using CleanArchitecture_Example.Scripts.Domain;
 using UniRx;
+using UnityEngine;
 
-namespace MVP_CleanArchitecture_Example.Scripts.InterfaceAdapters
+namespace CleanArchitecture_Example.Scripts.InterfaceAdapters
 {
     public class ShopScreenPresenter : IShowShopUseCaseOutput
     {
