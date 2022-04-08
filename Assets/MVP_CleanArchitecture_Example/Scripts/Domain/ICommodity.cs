@@ -16,5 +16,30 @@ namespace MVP_CleanArchitecture_Example.Scripts.Domain
             Key = key;
             Quantity = quantity;
         }
+
+        public Commodity Remove(int amount)
+        {
+            return new Commodity(Key, Quantity - amount);
+        }
+        
+        #region EqualityMembers
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Commodity) obj);
+        }
+
+        private bool Equals(ICommodity other)
+        {
+            return Key == other.Key && 
+                   Quantity == other.Quantity;
+        }
+
+        #endregion
+
+        
     }
 }
