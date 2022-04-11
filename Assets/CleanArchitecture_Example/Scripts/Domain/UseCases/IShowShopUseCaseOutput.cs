@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CleanArchitecture_Example.Scripts.Domain
+namespace CleanArchitecture_Example.Scripts.Domain.UseCases
 {
     public interface IShowShopUseCaseOutput
     {

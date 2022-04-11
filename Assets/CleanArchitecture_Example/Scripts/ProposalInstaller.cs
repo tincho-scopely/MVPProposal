@@ -1,6 +1,7 @@
 using CleanArchitecture_Example.Scripts.Domain;
 using CleanArchitecture_Example.Scripts.Domain.UseCases;
 using CleanArchitecture_Example.Scripts.InterfaceAdapters;
+using CleanArchitecture_Example.Scripts.InterfaceAdapters.Services;
 using CleanArchitecture_Example.Scripts.Presentation;
 using CleanArchitecture_Example.Scripts.Presentation.ImagesRepositories;
 using UnityEngine;

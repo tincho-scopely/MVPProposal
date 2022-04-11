@@ -1,8 +1,9 @@
 using System;
 using System.Threading.Tasks;
 using CleanArchitecture_Example.Scripts.Domain;
+using CleanArchitecture_Example.Scripts.Domain.UseCases;
 
-namespace CleanArchitecture_Example.Scripts.InterfaceAdapters
+namespace CleanArchitecture_Example.Scripts.InterfaceAdapters.Services
 {
     public class EndpointHelper : IEndpointHelper
     {

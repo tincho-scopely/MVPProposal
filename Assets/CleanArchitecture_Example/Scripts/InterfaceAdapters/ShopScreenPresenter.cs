@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using CleanArchitecture_Example.Scripts.Domain;
+using CleanArchitecture_Example.Scripts.Domain.UseCases;
+using CleanArchitecture_Example.Scripts.InterfaceAdapters.Services;
 using UniRx;
 using UnityEngine;
 

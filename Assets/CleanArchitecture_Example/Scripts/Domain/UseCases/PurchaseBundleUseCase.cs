@@ -1,13 +1,7 @@
 using System;
 
-namespace CleanArchitecture_Example.Scripts.Domain
+namespace CleanArchitecture_Example.Scripts.Domain.UseCases
 {
-    public interface IPurchaseBundleUseCase
-    {
-        void Purchase(int bundleId, Action<int> onSucceed, Action onFailed);
-    }
-
-    // This use case is the one to add Tests
     public class PurchaseBundleUseCase : IPurchaseBundleUseCase
     {
         private readonly IShopBundlesRepository _bundlesRepository;

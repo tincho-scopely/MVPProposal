@@ -1,4 +1,5 @@
 using CleanArchitecture_Example.Scripts.InterfaceAdapters;
+using CleanArchitecture_Example.Scripts.InterfaceAdapters.Services;
 using UnityEngine;
 
 namespace CleanArchitecture_Example.Scripts.Presentation.ImagesRepositories

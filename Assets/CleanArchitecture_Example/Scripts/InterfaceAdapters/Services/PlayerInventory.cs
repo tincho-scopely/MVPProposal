@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using CleanArchitecture_Example.Scripts.Domain;
 
-namespace CleanArchitecture_Example.Scripts.InterfaceAdapters
+namespace CleanArchitecture_Example.Scripts.InterfaceAdapters.Services
 {
     public class PlayerInventory : IPlayerInventory
     {
