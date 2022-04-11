@@ -1,4 +1,4 @@
-namespace CleanArchitecture_Example.Scripts.View.ImagesRepositories
+namespace CleanArchitecture_Example.Scripts.Presentation.ImagesRepositories
 {
     public class CommoditiesImagesRepository : ImagesRepository
     {

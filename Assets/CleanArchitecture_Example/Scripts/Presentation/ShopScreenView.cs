@@ -4,7 +4,7 @@ using TMPro;
 using UniRx;
 using UnityEngine;
 
-namespace CleanArchitecture_Example.Scripts.View
+namespace CleanArchitecture_Example.Scripts.Presentation
 {
     public class ShopScreenView : MonoBehaviour
     {

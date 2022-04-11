@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CleanArchitecture_Example.Scripts.View
+namespace CleanArchitecture_Example.Scripts.Presentation
 {
     [CreateAssetMenu(fileName = "ImagesRepository", menuName = "ScriptableObjects/Images Repository", order = 0)]
     public class ImagesRepositoryScriptableObject : ScriptableObject

@@ -1,32 +1,41 @@
 using CleanArchitecture_Example.Scripts.Domain;
+using CleanArchitecture_Example.Scripts.Domain.UseCases;
 using CleanArchitecture_Example.Scripts.InterfaceAdapters;
-using CleanArchitecture_Example.Scripts.View;
-using CleanArchitecture_Example.Scripts.View.ImagesRepositories;
+using CleanArchitecture_Example.Scripts.Presentation;
+using CleanArchitecture_Example.Scripts.Presentation.ImagesRepositories;
 using UnityEngine;
 
 namespace CleanArchitecture_Example.Scripts
 {
     public class ProposalInstaller : MonoBehaviour
     {
-        [Header("Dependencies")]
+        [Header("Views")]
         [SerializeField] private ShopScreenView _shopScreenView;
+        [SerializeField] private LoadingScreenView _loadingScreenView;
+        
+        [Header("Dependencies")]
         [SerializeField] private CommoditiesImagesRepository _commoditiesImagesRepository;
         [SerializeField] private CurrenciesImagesRepository _currenciesImagesRepository;
         
-        private ShopBundlesRepository _bundlesRepository;
-        private IShowShopUseCaseOutput _shopScreenPresenter;
+        private IShopBundlesRepository _bundlesRepository;
         private IPlayerInventory _playerInventory;
+        private IShowShopUseCaseOutput _showShopScreenOutput;
+        private IShowLoadingUseCaseOutput _showLoadingUseCaseOutput;
+        private IEndpointHelper _endpointHelper;
 
         private void Awake()
         {
             LoadRepository();
+            
+            InstallLoadingScreen();
+            InstallEndpointHelper();
+            InstallPlayerInventory();
+            InstallShopScreen();
         }
 
         private void Start()
         {
-            InstallPlayerInventory();
-            InstallScreen();
-            ShowScreen();
+            ShowShopScreen();
         }
 
         private void LoadRepository()
@@ -52,18 +61,30 @@ namespace CleanArchitecture_Example.Scripts
                 return Random.Range(min, max);
             }
         }
+        
+        private void InstallLoadingScreen()
+        {
+            var viewData = new LoadingScreenViewData();
+            _showLoadingUseCaseOutput = new LoadingScreenPresenter(viewData);
+            _loadingScreenView.SetData(viewData);
+        }
+        
+        private void InstallEndpointHelper()
+        {
+            _endpointHelper = new EndpointHelper(new ShowLoadingScreenUseCase(_showLoadingUseCaseOutput));
+        }
 
         private void InstallPlayerInventory()
         {
             _playerInventory = new PlayerInventory();
         }
 
-        private void InstallScreen()
+        private void InstallShopScreen()
         {
             var model = new ShopScreenViewData();
 
-            var purchaseBundleUseCase = new PurchaseBundleUseCase(_bundlesRepository, new EndpointHelper(), _playerInventory);
-            _shopScreenPresenter = new ShopScreenPresenter(
+            var purchaseBundleUseCase = new PurchaseBundleUseCase(_bundlesRepository, _endpointHelper, _playerInventory);
+            _showShopScreenOutput = new ShopScreenPresenter(
                 model, 
                 purchaseBundleUseCase,
                 _commoditiesImagesRepository,
@@ -73,9 +94,9 @@ namespace CleanArchitecture_Example.Scripts
             _shopScreenView.InjectDependencies(model);
         }
 
-        private void ShowScreen()
+        private void ShowShopScreen()
         {
-            var useCase = new ShowShopUseCase(_playerInventory, _bundlesRepository, _shopScreenPresenter);
+            var useCase = new ShowShopUseCase(_playerInventory, _bundlesRepository, _showShopScreenOutput);
             useCase.Show();
         }
     }

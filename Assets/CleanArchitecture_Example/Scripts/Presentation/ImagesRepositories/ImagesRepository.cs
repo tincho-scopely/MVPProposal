@@ -1,7 +1,7 @@
 using CleanArchitecture_Example.Scripts.InterfaceAdapters;
 using UnityEngine;
 
-namespace CleanArchitecture_Example.Scripts.View.ImagesRepositories
+namespace CleanArchitecture_Example.Scripts.Presentation.ImagesRepositories
 {
     public abstract class ImagesRepository : MonoBehaviour, IImageRepository
     {

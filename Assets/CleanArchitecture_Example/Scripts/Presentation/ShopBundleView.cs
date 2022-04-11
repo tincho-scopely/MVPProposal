@@ -4,7 +4,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CleanArchitecture_Example.Scripts.View
+namespace CleanArchitecture_Example.Scripts.Presentation
 {
     public class ShopBundleView : MonoBehaviour
     {
