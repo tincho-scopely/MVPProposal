@@ -75,7 +75,7 @@ namespace CleanArchitecture_Example.Scripts
 
         private void ShowScreen()
         {
-            var useCase = new ShowShopUseCase(_bundlesRepository, _shopScreenPresenter);
+            var useCase = new ShowShopUseCase(_playerInventory, _bundlesRepository, _shopScreenPresenter);
             useCase.Show();
         }
     }

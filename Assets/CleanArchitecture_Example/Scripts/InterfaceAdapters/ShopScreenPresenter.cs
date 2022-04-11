@@ -24,7 +24,7 @@ namespace CleanArchitecture_Example.Scripts.InterfaceAdapters
             _currenciesImagesRepository = currenciesImagesRepository;
         }
         
-        public void SetOutput(List<ShopBundleDto> bundleDtos)
+        public void SetOutput(int playerBonusRolls, List<ShopBundleDto> bundleDtos)
         {
             var bundleModels = new List<BundleViewData>(bundleDtos.Count);
             foreach (var bundleDto in bundleDtos)
@@ -32,6 +32,7 @@ namespace CleanArchitecture_Example.Scripts.InterfaceAdapters
                 bundleModels.Add(ParseBundle(bundleDto));
             }
 
+            _viewData.PlayerBonusRolls.Value = playerBonusRolls.ToString();
             _viewData.Show.Execute(bundleModels);
         }
 

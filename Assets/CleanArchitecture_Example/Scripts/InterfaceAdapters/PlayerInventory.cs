@@ -5,7 +5,7 @@ namespace CleanArchitecture_Example.Scripts.InterfaceAdapters
 {
     public class PlayerInventory : IPlayerInventory
     {
-        private List<ICurrency> _currencies;
+        private readonly List<ICurrency> _currencies;
 
         public PlayerInventory()
         {

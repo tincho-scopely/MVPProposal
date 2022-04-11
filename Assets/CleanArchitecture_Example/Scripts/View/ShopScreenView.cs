@@ -20,8 +20,6 @@ namespace CleanArchitecture_Example.Scripts.View
             _viewData = viewData;
             _viewData.Show.Subscribe(ShowScreen);
             _viewData.PlayerBonusRolls.Subscribe(UpdatePlayerInventory);
-            
-            // TODO: set initial Player bonus rolls from inventory
         }
 
         private void UpdatePlayerInventory(string quantity)

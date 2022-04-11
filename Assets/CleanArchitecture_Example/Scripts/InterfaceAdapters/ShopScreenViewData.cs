@@ -11,10 +11,8 @@ namespace CleanArchitecture_Example.Scripts.InterfaceAdapters
         public ShopScreenViewData()
         {
             Show = new ReactiveCommand<List<BundleViewData>>();
-            // TODO: load properly the initial amount of the user
-            PlayerBonusRolls = new ReactiveProperty<string>("100");
+            PlayerBonusRolls = new ReactiveProperty<string>();
         }
-        
     }
 
     public class BundleViewData
