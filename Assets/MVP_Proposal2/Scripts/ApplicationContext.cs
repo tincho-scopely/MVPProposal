@@ -13,7 +13,7 @@ namespace MVP_Proposal2.Scripts
         
         //TODO: Move to a provider
         private IShopBundlesRepository _shopBundlesRepository;
-        public IShopBundlesRepository ShopBundlesRepository => _shopBundlesRepository ?? new ShopBundlesRepository();
+        public IShopBundlesRepository ShopBundlesRepository => _shopBundlesRepository ?? new ShopBundlesRepository(new ShopApiGateway());
         
         private IPlayerInventoryRepository _playerInventoryRepository;
         public IPlayerInventoryRepository PlayerInventoryRepository => _playerInventoryRepository ?? new PlayerInventoryRepository();
