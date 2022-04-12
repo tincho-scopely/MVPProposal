@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd89b36cca674b45ab1b9c13781de5a0, type: 3}
+  m_Name: CommoditiesImagesRepository
+  m_EditorClassIdentifier: 
+  _images:
+  - Sprite: {fileID: 21300000, guid: e7723c7c50d9e2a468761a63f5d06a61, type: 3}
+    Key: Gift
+  - Sprite: {fileID: 21300000, guid: 628b4e3271c18c24e9a7b8b97da54da8, type: 3}
+    Key: Chest1
