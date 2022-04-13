@@ -1,4 +1,4 @@
-﻿using MVP_CleanArchitecture_Example.Scripts.Domain;
+﻿using CleanArchitecture_Example.Scripts.Domain;
 using MVP_Proposal2.Scripts.Domain.Actions;
 using MVP_Proposal2.Scripts.Domain.Model;
 using MVP_Proposal2.Scripts.Domain.Repositories;
@@ -41,11 +41,11 @@ namespace MVP_Proposal2.Scripts.Tests.Editor
         public void Remove_Cost_From_Player_Coins()
         {
             var expectedResult = new PurchaseBundleResult(10);
-            GivenAShopBundleWith(ABundle(withCost: new Commodity(CommodityDefinitions.BonusRolls, 10)));
+            GivenAShopBundleWith(ABundle(withCost: new Currency(CurrencyTypes.BonusRolls, 10)));
             GivenASuccessfulPurchase();
-            GivenAPlayerWithInventory(APlayerInventory(withCommodities:new [] { new Commodity(CommodityDefinitions.BonusRolls, 20)}));
+            GivenAPlayerWithInventory(APlayerInventory(withCurrencies:new [] { new Currency(CurrencyTypes.BonusRolls, 20)}));
             WhenExecuting();
-            ThenPlayerInventoryIsUpdatedWith(APlayerInventory(withCommodities: new [] { new Commodity(CommodityDefinitions.BonusRolls, 10)}));
+            ThenPlayerInventoryIsUpdatedWith(APlayerInventory(withCurrencies: new [] { new Currency(CurrencyTypes.BonusRolls, 10)}));
             ThenExpectedResultIs(expectedResult.PlayerRollsAmount);
         }
 

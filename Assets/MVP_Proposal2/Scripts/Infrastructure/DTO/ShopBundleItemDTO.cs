@@ -8,10 +8,10 @@ namespace MVP_Proposal2.Scripts.Infrastructure.DTO
     {
         public int Id;
         public string Name;
-        public CommodityDTO Cost;
+        public CurrencyDTO Cost;
         public CommodityDTO Item;
 
-        public ShopBundleItemDTO(int id, string name, CommodityDTO cost, CommodityDTO item)
+        public ShopBundleItemDTO(int id, string name, CurrencyDTO cost, CommodityDTO item)
         {
             Id = id;
             Name = name;
@@ -23,7 +23,7 @@ namespace MVP_Proposal2.Scripts.Infrastructure.DTO
             new ShopBundleItem(
                 Id,
                 Name,
-                Cost.ToCommodity(),
+                Cost.ToCurrency(),
                 Item.ToCommodity()
             );
     }

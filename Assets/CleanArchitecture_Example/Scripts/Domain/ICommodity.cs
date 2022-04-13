@@ -16,11 +16,6 @@ namespace CleanArchitecture_Example.Scripts.Domain
             Key = key;
             Quantity = quantity;
         }
-
-        public Commodity Remove(int amount)
-        {
-            return new Commodity(Key, Quantity - amount);
-        }
         
         #region EqualityMembers
 
@@ -39,7 +34,5 @@ namespace CleanArchitecture_Example.Scripts.Domain
         }
 
         #endregion
-
-        
     }
 }

@@ -1,5 +1,5 @@
 using System;
-using MVP_CleanArchitecture_Example.Scripts.Domain;
+using CleanArchitecture_Example.Scripts.Domain;
 using MVP_Proposal2.Scripts.Domain.Services;
 using MVP_Proposal2.Scripts.Infrastructure.DTO;
 using UniRx;
@@ -19,7 +19,7 @@ namespace MVP_Proposal2.Scripts.Infrastructure
                 bundles[i] = new ShopBundleItemDTO(
                     i,
                     "bundle" + i,
-                    new CommodityDTO(CommodityDefinitions.BonusRolls, random.Next(5, 21)),
+                    new CurrencyDTO(CurrencyTypes.BonusRolls, random.Next(5, 21)),
                     new CommodityDTO(string.Empty, new Random().Next(1, 3))
                 );
             }

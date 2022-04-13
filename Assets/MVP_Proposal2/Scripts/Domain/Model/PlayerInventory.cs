@@ -1,15 +1,15 @@
 using System.Linq;
-using MVP_CleanArchitecture_Example.Scripts.Domain;
+using CleanArchitecture_Example.Scripts.Domain;
 
 namespace MVP_Proposal2.Scripts.Domain.Model
 {
     public class PlayerInventory
     {
-        private readonly Commodity[] _commodities;
+        private readonly Currency[] _currencies;
 
-        public PlayerInventory(Commodity[] commodities)
+        public PlayerInventory(Currency[] currencies)
         {
-            _commodities = commodities;
+            _currencies = currencies;
         }
 
         public PlayerInventory RemoveRolls(int amount)
@@ -18,12 +18,12 @@ namespace MVP_Proposal2.Scripts.Domain.Model
         }
 
         public int GetCommodityAmount(string key) => 
-            _commodities.First(commodity => commodity.Key == key).Quantity;
+            _currencies.First(commodity => commodity.Key == key).Quantity;
 
-        private Commodity[] DiscountBonusRolls(int amount)
+        private Currency[] DiscountBonusRolls(int amount)
         {
-            return _commodities.Select(commodity =>
-                    commodity.Key == CommodityDefinitions.BonusRolls 
+            return _currencies.Select(commodity =>
+                    commodity.Key == CurrencyTypes.BonusRolls 
                         ? commodity.Remove(amount) 
                         : commodity)
                 .ToArray();
@@ -41,7 +41,7 @@ namespace MVP_Proposal2.Scripts.Domain.Model
 
         private bool Equals(PlayerInventory other)
         {
-            return _commodities.SequenceEqual(other._commodities);
+            return _currencies.SequenceEqual(other._currencies);
         }
 
         #endregion

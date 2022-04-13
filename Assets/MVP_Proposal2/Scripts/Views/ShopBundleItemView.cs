@@ -1,7 +1,6 @@
 ﻿using System;
 using MVP_Proposal2.Scripts.Presentation;
 using TMPro;
-using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 

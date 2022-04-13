@@ -1,4 +1,4 @@
-using MVP_CleanArchitecture_Example.Scripts.Domain;
+using CleanArchitecture_Example.Scripts.Domain;
 
 namespace MVP_Proposal2.Scripts.Domain.Model
 {
@@ -6,10 +6,10 @@ namespace MVP_Proposal2.Scripts.Domain.Model
     {
         public readonly int Id;
         public readonly string Name;
-        public readonly ICommodity Cost;
+        public readonly ICurrency Cost;
         public readonly ICommodity Item;
 
-        public ShopBundleItem(int id, string name, ICommodity cost, ICommodity item)
+        public ShopBundleItem(int id, string name, ICurrency cost, ICommodity item)
         {
             Id = id;
             Name = name;

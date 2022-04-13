@@ -1,5 +1,5 @@
 using System;
-using MVP_CleanArchitecture_Example.Scripts.Domain;
+using CleanArchitecture_Example.Scripts.Domain;
 using MVP_Proposal2.Scripts.Domain.Model;
 using MVP_Proposal2.Scripts.Domain.Repositories;
 using UniRx;
@@ -28,7 +28,7 @@ namespace MVP_Proposal2.Scripts.Domain.Actions
                 .Select(_ => playerInventory.RemoveRolls(bundle.Cost.Quantity))
                 .Do(updatedInventory => _playerInventoryRepository.Save(updatedInventory))
                 .Select(updatedInventory =>
-                    new PurchaseBundleResult(updatedInventory.GetCommodityAmount(CommodityDefinitions.BonusRolls)));
+                    new PurchaseBundleResult(updatedInventory.GetCommodityAmount(CurrencyTypes.BonusRolls)));
         }
     }
 }

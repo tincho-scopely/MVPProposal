@@ -1,4 +1,4 @@
-using MVP_CleanArchitecture_Example.Scripts.Domain;
+using CleanArchitecture_Example.Scripts.Domain;
 using MVP_Proposal2.Scripts.Domain.Model;
 using MVP_Proposal2.Scripts.Domain.Repositories;
 
@@ -12,7 +12,7 @@ namespace MVP_Proposal2.Scripts.Infrastructure
         {
             _playerInventory = new PlayerInventory(new[]
             {
-                new Commodity(CommodityDefinitions.BonusRolls, 100)
+                new Currency(CurrencyTypes.BonusRolls, 100)
             });
         }
         
