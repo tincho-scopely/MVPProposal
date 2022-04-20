@@ -30,8 +30,8 @@ namespace MVP_Proposal2.Scripts.Views
         {
             base.Start();
 
-            var loadBundles = new LoadBundles(DependencyProvider.ShopBundlesRepository);
-            var purchaseBundle = new PurchaseBundle(DependencyProvider.ShopBundlesRepository,
+            var loadBundles = new LoadBundlesUseCase(DependencyProvider.ShopBundlesRepository);
+            var purchaseBundle = new PurchaseBundleUseCase(DependencyProvider.ShopBundlesRepository,
                 DependencyProvider.PlayerInventoryRepository);
             presenter = new ShopPresenter(this, loadBundles, purchaseBundle);
             Show();

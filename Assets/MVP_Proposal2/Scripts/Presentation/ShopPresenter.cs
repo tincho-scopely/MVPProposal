@@ -9,19 +9,19 @@ namespace MVP_Proposal2.Scripts.Presentation
     public class ShopPresenter
     {
         private readonly IShopPopupView _view;
-        private readonly LoadBundles _loadBundles;
-        private readonly PurchaseBundle _purchaseBundle;
+        private readonly LoadBundlesUseCase _loadBundlesUseCase;
+        private readonly PurchaseBundleUseCase _purchaseBundleUseCase;
 
-        public ShopPresenter(IShopPopupView view, LoadBundles loadBundles, PurchaseBundle purchaseBundle)
+        public ShopPresenter(IShopPopupView view, LoadBundlesUseCase loadBundlesUseCase, PurchaseBundleUseCase purchaseBundleUseCase)
         {
             _view = view;
-            _loadBundles = loadBundles;
-            _purchaseBundle = purchaseBundle;
+            _loadBundlesUseCase = loadBundlesUseCase;
+            _purchaseBundleUseCase = purchaseBundleUseCase;
         }
 
         public void Show()
         {
-            _loadBundles.Execute()
+            _loadBundlesUseCase.Execute()
                 .Do(LoadBundles)
                 .Subscribe();
         }
@@ -31,7 +31,7 @@ namespace MVP_Proposal2.Scripts.Presentation
 
         public void PurchaseBundle(int bundleId)
         {
-            _purchaseBundle.Execute(bundleId)
+            _purchaseBundleUseCase.Execute(bundleId)
                 .Do(result => _view.UpdateRolls(result.PlayerRollsAmount))
                 .Subscribe();
         }

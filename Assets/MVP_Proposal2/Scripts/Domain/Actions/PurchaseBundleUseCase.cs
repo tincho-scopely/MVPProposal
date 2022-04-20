@@ -7,12 +7,12 @@ using IShopBundlesRepository = MVP_Proposal2.Scripts.Domain.Repositories.IShopBu
 
 namespace MVP_Proposal2.Scripts.Domain.Actions
 {
-    public class PurchaseBundle
+    public class PurchaseBundleUseCase
     {
         private readonly IShopBundlesRepository _shopBundlesRepository;
         private readonly IPlayerInventoryRepository _playerInventoryRepository;
 
-        public PurchaseBundle(IShopBundlesRepository shopBundlesRepository,
+        public PurchaseBundleUseCase(IShopBundlesRepository shopBundlesRepository,
             IPlayerInventoryRepository playerInventoryRepository)
         {
             _shopBundlesRepository = shopBundlesRepository;

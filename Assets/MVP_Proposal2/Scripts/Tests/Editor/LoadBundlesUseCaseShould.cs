@@ -10,10 +10,10 @@ using IShopBundlesRepository = MVP_Proposal2.Scripts.Domain.Repositories.IShopBu
 namespace MVP_Proposal2.Scripts.Tests.Editor
 {
     [TestFixture]
-    public class LoadBundlesShould 
+    public class LoadBundlesUseCaseShould 
     {
         private IShopBundlesRepository shopBundlesRepository;
-        private LoadBundles action;
+        private LoadBundlesUseCase action;
         private List<ShopBundleItem> result;
 
         private static List<ShopBundleItem> SomeBundles()
@@ -29,7 +29,7 @@ namespace MVP_Proposal2.Scripts.Tests.Editor
         public void Setup()
         {
             shopBundlesRepository = Substitute.For<IShopBundlesRepository>();
-            action = new LoadBundles(shopBundlesRepository);
+            action = new LoadBundlesUseCase(shopBundlesRepository);
         }
 
         [Test]

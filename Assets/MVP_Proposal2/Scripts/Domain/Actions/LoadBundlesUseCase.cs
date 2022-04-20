@@ -5,11 +5,11 @@ using MVP_Proposal2.Scripts.Domain.Repositories;
 
 namespace MVP_Proposal2.Scripts.Domain.Actions
 {
-    public class LoadBundles
+    public class LoadBundlesUseCase
     {
         private readonly IShopBundlesRepository _shopBundlesRepository;
 
-        public LoadBundles(IShopBundlesRepository shopBundlesRepository)
+        public LoadBundlesUseCase(IShopBundlesRepository shopBundlesRepository)
         {
             _shopBundlesRepository = shopBundlesRepository;
         }

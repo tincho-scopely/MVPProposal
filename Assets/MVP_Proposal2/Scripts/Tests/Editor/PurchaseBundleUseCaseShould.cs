@@ -12,13 +12,13 @@ using IShopBundlesRepository = MVP_Proposal2.Scripts.Domain.Repositories.IShopBu
 namespace MVP_Proposal2.Scripts.Tests.Editor
 {
     [TestFixture]
-    public class PurchaseBundleShould 
+    public class PurchaseBundleUseCaseShould 
     {
         private const int BUNDLE_ID = 1;
         
         private IShopBundlesRepository shopBundlesRepository;
         private IPlayerInventoryRepository playerInventoryRepository;
-        private PurchaseBundle action;
+        private PurchaseBundleUseCase action;
         private PurchaseBundleResult result;
 
 
@@ -27,7 +27,7 @@ namespace MVP_Proposal2.Scripts.Tests.Editor
         {
             playerInventoryRepository = Substitute.For<IPlayerInventoryRepository>();
             shopBundlesRepository = Substitute.For<IShopBundlesRepository>();
-            action = new PurchaseBundle(shopBundlesRepository, playerInventoryRepository);
+            action = new PurchaseBundleUseCase(shopBundlesRepository, playerInventoryRepository);
         }
         
         [Test]

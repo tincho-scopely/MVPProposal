@@ -16,8 +16,8 @@ namespace MVP_Proposal2.Scripts.Views
 
         public void Init(IShopBundlesRepository shopBundlesRepository, IPlayerInventoryRepository playerInventoryRepository)
         {
-            var loadBundles = new LoadBundles(shopBundlesRepository);
-            var purchaseBundle = new PurchaseBundle(shopBundlesRepository, playerInventoryRepository);
+            var loadBundles = new LoadBundlesUseCase(shopBundlesRepository);
+            var purchaseBundle = new PurchaseBundleUseCase(shopBundlesRepository, playerInventoryRepository);
             presenter = new ShopPresenter(this, loadBundles, purchaseBundle);
         }
 
