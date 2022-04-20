@@ -1,3 +1,4 @@
+using System;
 using MVP_Proposal2.Scripts.Domain.Model;
 
 namespace MVP_Proposal2.Scripts.Presentation
@@ -10,9 +11,10 @@ namespace MVP_Proposal2.Scripts.Presentation
         public readonly string ItemImage;
         public readonly int CostAmount;
         public readonly string CostCommodityImage;
+        public Action<int> OnPurchaseClick;
 
         public ShopBundleItemViewData(int bundleId, string name, int itemAmount, string itemImage, 
-            int costAmount, string costCommodityImage)
+            int costAmount, string costCommodityImage, Action<int> onPurchaseClick)
         {
             BundleId = bundleId;
             Name = name;
@@ -20,16 +22,18 @@ namespace MVP_Proposal2.Scripts.Presentation
             ItemImage = itemImage;
             CostAmount = costAmount;
             CostCommodityImage = costCommodityImage;
+            OnPurchaseClick = onPurchaseClick;
         }
 
-        public static ShopBundleItemViewData From(ShopBundleItem shopBundleItem) =>
+        public static ShopBundleItemViewData From(ShopBundleItem shopBundleItem, Action<int> onPurchaseClick) =>
             new ShopBundleItemViewData(
                 shopBundleItem.Id,
                 shopBundleItem.Name,
                 shopBundleItem.Cost.Quantity,
                 shopBundleItem.Item.Key,
                 shopBundleItem.Cost.Quantity,
-                shopBundleItem.Cost.Key
+                shopBundleItem.Cost.Key,
+                onPurchaseClick
             );
     }
 }

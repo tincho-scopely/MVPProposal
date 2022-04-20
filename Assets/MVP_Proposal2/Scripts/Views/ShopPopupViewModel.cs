@@ -9,7 +9,7 @@ namespace MVP_Proposal2.Scripts.Views
 {
     public class ShopPopupViewModel : MojoViewModel, IShopPopupView
     {
-        [SerializeField] private ShopBundleItemView[] bundleItems;
+        [SerializeField] private ShopBundleItemViewModel[] bundleItems;
         [SerializeField] private TextMeshProUGUI rollsText;
 
         private int _rolls;
@@ -41,12 +41,15 @@ namespace MVP_Proposal2.Scripts.Views
 
         public void LoadBundles(List<ShopBundleItemViewData> bundles)
         {
+            //Real Implementation:
+            // Bundles = bundles;
+            
+            
             // Logica del Collection Binding
             for (int i = 0; i < bundles.Count; i++)
             {
-                bundleItems[i].Init(
-                    bundles[i],
-                    presenter.PurchaseBundle
+                bundleItems[i].SetData(
+                    bundles[i]
                 );
             }
         }

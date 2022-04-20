@@ -27,9 +27,9 @@ namespace MVP_Proposal2.Scripts.Presentation
         }
 
         private void LoadBundles(List<ShopBundleItem> bundles) => 
-            _view.LoadBundles(bundles.Select(ShopBundleItemViewData.From).ToList());
+            _view.LoadBundles(bundles.Select(item => ShopBundleItemViewData.From(item, PurchaseBundle)).ToList());
 
-        public void PurchaseBundle(int bundleId)
+        private void PurchaseBundle(int bundleId)
         {
             _purchaseBundleUseCase.Execute(bundleId)
                 .Do(result => _view.UpdateRolls(result.PlayerRollsAmount))

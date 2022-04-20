@@ -9,7 +9,7 @@ namespace MVP_Proposal2.Scripts.Views
 {
     public class ShopPopupView : MonoBehaviour, IShopPopupView
     {
-        [SerializeField] private ShopBundleItemView[] bundleItems;
+        [SerializeField] private ShopBundleItemViewModel[] bundleItems;
         [SerializeField] private TextMeshProUGUI rollsText;
         
         private ShopPresenter presenter;
@@ -27,9 +27,8 @@ namespace MVP_Proposal2.Scripts.Views
         {
             for (int i = 0; i < bundles.Count; i++)
             {
-                bundleItems[i].Init(
-                    bundles[i],
-                    presenter.PurchaseBundle
+                bundleItems[i].SetData(
+                    bundles[i]
                 );
                 
             }
