@@ -8,6 +8,8 @@ namespace MVP_Proposal2.Scripts.Views
 {
     public class ShopBundleItemViewModel : MojoViewModel
     {
+        #region ReplaceForMojoBindings
+
         [SerializeField] private TextMeshProUGUI nameText;
         [SerializeField] private Image itemImage;
         [SerializeField] private TextMeshProUGUI itemAmountText;
@@ -15,9 +17,52 @@ namespace MVP_Proposal2.Scripts.Views
         [SerializeField] private Image costCommodityImage;
         [SerializeField] private Button purchaseButton;
 
+        #endregion
+
+        #region Properties
+
+        private string _bundleName;
+
+        public string BundleName
+        {
+            get => _bundleName;
+            set
+            {
+                _bundleName = value;
+                RaisePropertyChange(nameText, BundleName);
+            }
+        }
+        
+        private int _itemAmount;
+
+        public int ItemAmount
+        {
+            get => _itemAmount;
+            set
+            {
+                _itemAmount = value;
+                RaisePropertyChange(itemAmountText, ItemAmount.ToString());
+            }
+        }
+        
+        private int _costAmount;
+
+        public int CostAmount
+        {
+            get => _costAmount;
+            set
+            {
+                _costAmount = value;
+                RaisePropertyChange(costAmountText, CostAmount.ToString());
+            }
+        }
+
+        #endregion
+        
+
         private ShopBundleItemViewData _viewData;
         
-        public void SetData(ShopBundleItemViewData viewData)
+        public void MojoSetData(ShopBundleItemViewData viewData)
         {
             _viewData = viewData;
             UpdateView();
@@ -28,14 +73,14 @@ namespace MVP_Proposal2.Scripts.Views
 
         private void OnButtonClick()
         {
-            _viewData.OnPurchaseClick.Invoke(_viewData.BundleId);
+            _viewData.OnPurchase.Invoke(_viewData.BundleId);
         }
         private void UpdateView()
         {
-            nameText.SetText(_viewData.Name);
+            BundleName = _viewData.Name;
+            ItemAmount = _viewData.ItemAmount;
+            CostAmount = _viewData.CostAmount;
             //itemImage.sprite = viewData.ItemImage; Load from source by key (resources for example)
-            itemAmountText.SetText(_viewData.ItemAmount.ToString());
-            costAmountText.SetText(_viewData.CostAmount.ToString());
             //costCommodityImage.sprite = viewData.CostCommodityImage; Load from source by key (resources for example)
         }
     }

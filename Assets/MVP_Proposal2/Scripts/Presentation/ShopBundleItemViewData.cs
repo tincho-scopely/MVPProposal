@@ -11,10 +11,10 @@ namespace MVP_Proposal2.Scripts.Presentation
         public readonly string ItemImage;
         public readonly int CostAmount;
         public readonly string CostCommodityImage;
-        public Action<int> OnPurchaseClick;
+        public Action<int> OnPurchase;
 
         public ShopBundleItemViewData(int bundleId, string name, int itemAmount, string itemImage, 
-            int costAmount, string costCommodityImage, Action<int> onPurchaseClick)
+            int costAmount, string costCommodityImage, Action<int> onPurchase)
         {
             BundleId = bundleId;
             Name = name;
@@ -22,10 +22,10 @@ namespace MVP_Proposal2.Scripts.Presentation
             ItemImage = itemImage;
             CostAmount = costAmount;
             CostCommodityImage = costCommodityImage;
-            OnPurchaseClick = onPurchaseClick;
+            OnPurchase = onPurchase;
         }
 
-        public static ShopBundleItemViewData From(ShopBundleItem shopBundleItem, Action<int> onPurchaseClick) =>
+        public static ShopBundleItemViewData From(ShopBundleItem shopBundleItem, Action<int> onPurchase) =>
             new ShopBundleItemViewData(
                 shopBundleItem.Id,
                 shopBundleItem.Name,
@@ -33,7 +33,7 @@ namespace MVP_Proposal2.Scripts.Presentation
                 shopBundleItem.Item.Key,
                 shopBundleItem.Cost.Quantity,
                 shopBundleItem.Cost.Key,
-                onPurchaseClick
+                onPurchase
             );
     }
 }

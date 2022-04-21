@@ -48,7 +48,7 @@ namespace MVP_Proposal2.Scripts.Views
             // Logica del Collection Binding
             for (int i = 0; i < bundles.Count; i++)
             {
-                bundleItems[i].SetData(
+                bundleItems[i].MojoSetData(
                     bundles[i]
                 );
             }
